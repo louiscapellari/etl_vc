@@ -1,2 +1,12 @@
-# etl_vc
-Import, transformation et intégration dans la base de données PostgreSQL/PostGIS "etl_vc" avec mise à jour possible des couches : commune de Val-Cenis (IGN), bâtiments de Val-Cenis (IGN), base adresse nationale de Val-Cenis (IGN), sommets présents sur le territoire de Val-Cenis (OSM). 
+# ETL Val-Cenis – Pipeline géospatial (IGN, OSM, PostGIS)
+
+> **TL;DR** : ETL reproductible pour Val-Cenis (Savoie, 73, France) qui : extrait (WFS/OSM/BDTOPO), transforme (nettoyage + mapping), charge dans une base de donnée PostgreSQL/PostGIS intitulée "etl_vc" et s'exécute via pipeline.py ou run_pipeline_full.bat. Avec la possibilité d'une mise à jour mensuelle via la commande "python pipeline.py --update" dans un environnement python ou utiliser le run_pipeline_update.bat. 
+
+## Objectifs
+- Automatiser l’acquisition de données géospatiales (WFS / téléchargement) ;
+- Filtrer/découper par l’emprise de **Val-Cenis** ;
+- Créer les tables **PostgreSQL/PostGIS** au bon format ;
+- Charger les attributs + géométries, indexer, timestamp, commentaires ;
+- Planifier une **mise à jour mensuelle** (état + backup).
+
+
