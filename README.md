@@ -10,7 +10,7 @@ ETL reproductible pour Val-Cenis (Savoie, 73, France) qui : extrait (WFS/OSM/BDT
 - Planifier une **mise à jour mensuelle**.
 
 ## Sources des données 
-1) Val-Cenis (ADMIN EXPRESS (mise à jour en continu) – communes, IGN WFS)
+1) Val-Cenis (ADMIN EXPRESS (mise à jour en continu) – communes, IGN WFS)<br>
 Flux WFS : https://data.geopf.fr/annexes/ressources/wfs/administratif.xml
 Filtre : nom_officiel = 'Val-Cenis'
 
