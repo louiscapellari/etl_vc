@@ -3,10 +3,10 @@
 ETL reproductible pour Val-Cenis (Savoie, 73, France) qui : extrait (WFS/OSM/BDTOPO), transforme (nettoyage, formatage, découpage), charge dans une base de donnée PostgreSQL/PostGIS intitulée "etl_vc" et s'exécute via "pipeline.py" ou "run_pipeline_full.bat". Avec la possibilité d'une mise à jour mensuelle via la commande "python pipeline.py --update" dans un environnement python ou via le fichier .bat "run_pipeline_update.bat". 
 
 ## Objectifs
-- Automatiser l’acquisition de données géospatiales (via utilisation du WFS / téléchargement) ;
+- Automatiser l’acquisition de données géospatiales pour la commune de **Val-Cenis** (via utilisation de WFS / téléchargements) ;
 - Filtrer/découper par l’emprise de **Val-Cenis** ;
 - Créer les tables **PostgreSQL/PostGIS** au bon format ;
-- Charger les attributs et les géométries, indexer, timestamp, commentaires ;
+- Charger automatiquement les attributs et les géométries, indexer, mettre un timestamp, mettre des commentaires ;
 - Planifier une **mise à jour mensuelle**.
 
 ## Sources des données 
@@ -30,12 +30,12 @@ Filtre : "peak" (sur champ "fclass")<br>
 Le script filtre sur la couche, extrait, puis découpe sur l'emprise de Val-Cenis.
 
 ## Structure 
-Schéma = "vc-etl" 
+Schéma : "vc-etl" 
 
 Tables :<br> 
 val_cenis<br>
 Champs : fid, gml_id, cleabs, nom, statut, population, insee_code, date_recensement, insee_canton, insee_arr, insee_dep, siren_code, postal_code, supf_cadas, updated_at<br>
-Types : integer (PK), text, text, text, text, text, integer, text, timestamp, text, text text, text, text, integer, timestamp<br>
+Types : integer(PK), text, text, text, text, text, integer, text, timestamp, text, text text, text, text, integer, timestamp<br>
 Géométrie : MULTIPOLYGON, 2154
 
 ban<br>
@@ -45,12 +45,12 @@ Géométrie : POINT, 2154
 
 batiments<br> 
 Champs : fid, cleabs, nature, usage1, usage2, construc_legere, etat_obj, date_crea, date_modif, date_apparition, date_confirm, sources, id_sources, methodes_acquis_plani, methode_acquis_alti, precision_plani, precision_alti, nombre_logements, nombre_etages, materiaux_murs, materiaux_toiture, hauteur, alti_mini_sol, alti_mini_toit, alti_max_toit, alti_max_sol, origine_bat, appariement_fonciers, id_rnb, created_at, updated_at<br>
-Types : integer, text, text, text, text, bool, text, timestamp, timestamp, date, date, text, text, text, text, float, float, integer, integer, text, float, float, float, float, text, text, text, timestamp, timestamp<br> 
+Types : integer(PK), text, text, text, text, bool, text, timestamp, timestamp, date, date, text, text, text, text, float, float, integer, integer, text, float, float, float, float, text, text, text, timestamp, timestamp<br> 
 Géométrie : MULTIPOLYGON, 2154 
 
 sommets<br>
 Champs : fid, osm_id, nom, altitude, updated_at<br>
-Types : PK, TEXT, TEXT, DOUBLE, DateTime<br>
+Types : integer(PK), text, text, double, timestamp<br>
 Géométrie : POINT, 2154
 
 ## Dépendances 
