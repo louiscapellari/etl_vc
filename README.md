@@ -14,49 +14,49 @@ ETL reproductible pour Val-Cenis (Savoie, 73, France) qui : extrait (WFS/OSM/BDT
 Flux WFS : https://data.geopf.fr/annexes/ressources/wfs/administratif.xml<br>
 Filtre : nom_officiel = 'Val-Cenis'
 
-2) BAN – Base Adresse Nationale (IGN WFS)
-Flux WFS : https://data.geopf.fr/annexes/ressources/wfs/adresse.xml
+2) BAN – Base Adresse Nationale (IGN WFS)<br>
+Flux WFS : https://data.geopf.fr/annexes/ressources/wfs/adresse.xml<br>
 Filtre : nom_commune = 'Val-Cenis'
 
-3) Bâtiments (BD TOPO IGN – GPKG département D073 Savoie)
-Page catalogue : https://geoservices.ign.fr/bdtopo
-Couche : batiment (détection automatique)
+3) Bâtiments (BD TOPO IGN – GPKG département D073 Savoie)<br>
+Page catalogue : https://geoservices.ign.fr/bdtopo<br>
+Couche : batiment (détection automatique)<br>
 Le script parcourt la page internet pour récupérer le lien .7z le plus récent, télécharge, extrait, puis découpe sur l’emprise Val-Cenis.
 
-4) Sommets (OSM – Geofabrik Rhône-Alpes)
-Téléchargement : https://download.geofabrik.de/europe/france/rhone-alpes-latest-free.shp.zip
-Couche : gis_osm_natural_free_1
-Filtre : "peak" (sur champ "fclass")
+4) Sommets (OSM – Geofabrik Rhône-Alpes)<br>
+Téléchargement : https://download.geofabrik.de/europe/france/rhone-alpes-latest-free.shp.zip<br>
+Couche : gis_osm_natural_free_1<br>
+Filtre : "peak" (sur champ "fclass")<br>
 Le script filtre sur la couche, extrait, puis découpe sur l'emprise de Val-Cenis.
 
 ## Structure 
 Schéma = "vc-etl" 
 
-Tables : 
-val_cenis
-Champs : fid, gml_id, cleabs, nom, statut, population, insee_code, date_recensement, insee_canton, insee_arr, insee_dep, siren_code, postal_code, supf_cadas, updated_at
-Types : integer (PK), text, text, text, text, text, integer, text, timestamp, text, text text, text, text, integer, timestamp
+Tables :<br> 
+val_cenis<br>
+Champs : fid, gml_id, cleabs, nom, statut, population, insee_code, date_recensement, insee_canton, insee_arr, insee_dep, siren_code, postal_code, supf_cadas, updated_at<br>
+Types : integer (PK), text, text, text, text, text, integer, text, timestamp, text, text text, text, text, integer, timestamp<br>
 Géométrie : MULTIPOLYGON, 2154
 
-ban
-Champs : Colonnes dynamiques (récupérées du flux)
-Types : Similaires aux types utilisés dans le flux. 
+ban<br>
+Champs : Colonnes dynamiques (récupérées du flux)<br>
+Types : Similaires aux types utilisés dans le flux.<br> 
 Géométrie : POINT, 2154
 
-batiments 
-Champs : fid, cleabs, nature, usage1, usage2, construc_legere, etat_obj, date_crea, date_modif, date_apparition, date_confirm, sources, id_sources, methodes_acquis_plani, methode_acquis_alti, precision_plani, precision_alti, nombre_logements, nombre_etages, materiaux_murs, materiaux_toiture, hauteur, alti_mini_sol, alti_mini_toit, alti_max_toit, alti_max_sol, origine_bat, appariement_fonciers, id_rnb, created_at, updated_at
-Types : integer, text, text, text, text, bool, text, timestamp, timestamp, date, date, text, text, text, text, float, float, integer, integer, text, float, float, float, float, text, text, text, timestamp, timestamp 
+batiments<br> 
+Champs : fid, cleabs, nature, usage1, usage2, construc_legere, etat_obj, date_crea, date_modif, date_apparition, date_confirm, sources, id_sources, methodes_acquis_plani, methode_acquis_alti, precision_plani, precision_alti, nombre_logements, nombre_etages, materiaux_murs, materiaux_toiture, hauteur, alti_mini_sol, alti_mini_toit, alti_max_toit, alti_max_sol, origine_bat, appariement_fonciers, id_rnb, created_at, updated_at<br>
+Types : integer, text, text, text, text, bool, text, timestamp, timestamp, date, date, text, text, text, text, float, float, integer, integer, text, float, float, float, float, text, text, text, timestamp, timestamp<br> 
 Géométrie : MULTIPOLYGON, 2154 
 
-sommets
-Champs : fid, osm_id, nom, altitude, updated_at
-Types : PK, TEXT, TEXT, DOUBLE, DateTime
+sommets<br>
+Champs : fid, osm_id, nom, altitude, updated_at<br>
+Types : PK, TEXT, TEXT, DOUBLE, DateTime<br>
 Géométrie : POINT, 2154
 
 ## Dépendances 
 Environnement Anaconda ou Miniconda en python>3.12 recommandé.
 
-Liste des librairies python indispensables : 
+Liste des librairies python indispensables :<br> 
 - geopandas
 - pandas
 - requests
