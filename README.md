@@ -11,21 +11,15 @@ ETL reproductible pour Val-Cenis (Savoie, 73, France) qui : extrait (WFS/OSM/BDT
 
 ## Sources des données 
 1) Val-Cenis (ADMIN EXPRESS – communes, IGN WFS)
-
 Flux WFS : https://data.geopf.fr/annexes/ressources/wfs/administratif.xml
-
-typename (Flux) : LIMITES_ADMINISTRATIVES_EXPRESS.LATEST:commune
-
 filtre : nom_officiel = 'Val-Cenis'
 
-3) BAN – Base Adresse Nationale (IGN WFS)
+2) BAN – Base Adresse Nationale (IGN WFS)
 Flux WFS : https://data.geopf.fr/annexes/ressources/wfs/adresse.xml
-typename (Flux) : BAN.DATA.GOUV:ban
 filtre : nom_commune = 'Val-Cenis'
 
-4) Bâtiments (BD TOPO IGN – GPKG département D073 Savoie)
+3) Bâtiments (BD TOPO IGN – GPKG département D073 Savoie)
 Page catalogue : https://geoservices.ign.fr/bdtopo
-Format : GPKG 
 Couche : batiment (détection automatique)
 Le script parcourt la page pour récupérer le lien .7z le plus récent, télécharge, extrait, puis découpe sur l’emprise Val-Cenis.
 
@@ -33,6 +27,7 @@ Le script parcourt la page pour récupérer le lien .7z le plus récent, téléc
 Téléchargement : https://download.geofabrik.de/europe/france/rhone-alpes-latest-free.shp.zip
 Couche : gis_osm_natural_free_1
 Filtre : "peak" (sur champ "fclass")
+Le script filtre sur la couche, extrait, puis découpe sur l'emprise de Val-Cenis
 
 ## Structure 
 Schéma = "vc-etl" 
