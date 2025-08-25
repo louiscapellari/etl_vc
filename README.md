@@ -28,6 +28,49 @@ Téléchargement : https://download.geofabrik.de/europe/france/rhone-alpes-lates
 Couche : gis_osm_natural_free_1<br>
 Filtre : "peak" (sur champ "fclass")<br>
 
+## Sources des données
+
+### 1) Val-Cenis – ADMIN EXPRESS (IGN)
+
+| **Nom du flux** | ADMIN EXPRESS mises a jour en continu - commune                    |
+| **Fournisseur**    | IGN                                                                    |
+| **Accès (WFS)**    | https://data.geopf.fr/annexes/ressources/wfs/administratif.xml         |
+| **Filtre appliqué**| `nom_officiel = 'Val-Cenis'`                                           |
+
+---
+
+### 2) BAN – Base Adresse Nationale (IGN)
+
+| **Nom du flux** | Base Adresse Nationale (BAN)                                           |
+| **Fournisseur**    | IGN                                                                    |
+| **Accès (WFS)**    | https://data.geopf.fr/annexes/ressources/wfs/adresse.xml               |
+| **Filtre appliqué**| `nom_commune = 'Val-Cenis'`                                            |
+
+---
+
+### 3) Bâtiments – BD TOPO (IGN)
+
+| **Nom du dossier**  | BD TOPO – Département D073 (Savoie)                                    |
+| **Fournisseur**     | IGN                                                                    |
+| **Format source**   | GPKG                                                                   |
+| **Adresse de téléchargement** | https://geoservices.ign.fr/bdtopo                                      |
+| **Couche utilisée** | `batiment` (détection automatique)                                     |
+| **Traitement** | Le script récupère le lien `.7z`de BD TOPO – Département D073 le plus récent, télécharge, extrait, découpe sur l’emprise Val-Cenis |
+
+---
+
+### 4) Sommets – Geofabrik Rhône-Alpes (OSM)
+
+| Attribut        | Valeur                                                                 |
+|-----------------|------------------------------------------------------------------------|
+| **Nom du dossier**   | Données OSM – Geofabrik Rhône-Alpes                                    |
+| **Fournisseur**     | OpenStreetMap / Geofabrik                                              |
+| **Format source**   | SHP                                                                   |
+|  **Adresse de téléchargement**  | https://download.geofabrik.de/europe/france/rhone-alpes-latest-free.shp.zip |
+| **Couche utilisée** | `gis_osm_natural_free_1`                                               |
+| **Filtre appliqué** | `"peak"` (sur champ `fclass`)                                          |
+
+
 ## Structure
 
 **Base de données** : `etl_vc`  
@@ -63,7 +106,7 @@ Filtre : "peak" (sur champ "fclass")<br>
 
 | Champs                 | Types       | Notes                             |
 |-----------------------|------------|-----------------------------------|
-| Identique au flux  | Identiques au flux  | Champs et types récupérés du flux                |
+| Identiques au flux  | Identiques au flux  | Champs et types récupérés du flux                |
 
 **Géométrie** : `POINT` (SRID 2154)
 
