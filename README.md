@@ -63,7 +63,7 @@ ETL reproductible pour **Val-Cenis** (Savoie, 73, France) qui : extrait (via WFS
 
 ### Table : `val_cenis`
 
-| Champs            | Types         | Description (si dispo)   |
+| Champs            | Types         | Description   |
 |------------------|--------------|---------------------------|
 | fid              | integer (PK) | Identifiant unique        |
 | gml_id           | text         | ID GML                    |
