@@ -31,7 +31,8 @@ Filtre : "peak" (sur champ "fclass")<br>
 ## Sources des données
 
 ### 1) Val-Cenis – ADMIN EXPRESS (IGN)
-
+|        |                                                                 |
+|-----------------|------------------------------------------------------------------------|
 | **Nom du flux** | ADMIN EXPRESS mises a jour en continu - commune                    |
 | **Fournisseur**    | IGN                                                                    |
 | **Accès (WFS)**    | https://data.geopf.fr/annexes/ressources/wfs/administratif.xml         |
@@ -40,7 +41,8 @@ Filtre : "peak" (sur champ "fclass")<br>
 ---
 
 ### 2) BAN – Base Adresse Nationale (IGN)
-
+|        |                                                                 |
+|-----------------|------------------------------------------------------------------------|
 | **Nom du flux** | Base Adresse Nationale (BAN)                                           |
 | **Fournisseur**    | IGN                                                                    |
 | **Accès (WFS)**    | https://data.geopf.fr/annexes/ressources/wfs/adresse.xml               |
@@ -49,7 +51,7 @@ Filtre : "peak" (sur champ "fclass")<br>
 ---
 
 ### 3) Bâtiments – BD TOPO (IGN)
-| Attribut        | Valeur                                                                 |
+|        |                                                                 |
 |-----------------|------------------------------------------------------------------------|
 | **Nom du dossier**  | BD TOPO – Département D073 (Savoie)                                    |
 | **Fournisseur**     | IGN                                                                    |
@@ -62,7 +64,7 @@ Filtre : "peak" (sur champ "fclass")<br>
 
 ### 4) Sommets – Geofabrik Rhône-Alpes (OSM)
 
-| Attribut        | Valeur                                                                 |
+|        |                                                                 |
 |-----------------|------------------------------------------------------------------------|
 | **Nom du dossier**   | Données OSM – Geofabrik Rhône-Alpes                                    |
 | **Fournisseur**     | OpenStreetMap / Geofabrik                                              |
