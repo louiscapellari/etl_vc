@@ -63,7 +63,7 @@ Géométrie : POINT, 2154
 
 ### Table : `val_cenis`
 
-| Champ            | Type         | Description (si dispo)   |
+| Champs            | Types         | Description (si dispo)   |
 |------------------|--------------|---------------------------|
 | fid              | integer (PK) | Identifiant unique        |
 | gml_id           | text         | ID GML                    |
@@ -87,7 +87,7 @@ Géométrie : POINT, 2154
 
 ### Table : `ban`
 
-| Champ                 | Type       | Notes                             |
+| Champs                 | Types       | Notes                             |
 |-----------------------|------------|-----------------------------------|
 | Colonnes dynamiques   | variables  | Récupérées du flux                |
 | *(selon flux)*        | *(similar)*| Types définis par le flux source  |
@@ -98,7 +98,7 @@ Géométrie : POINT, 2154
 
 ### Table : `batiments`
 
-| Champ                  | Type         | Description |
+| Champs                  | Types         | Description |
 |------------------------|--------------|-------------|
 | fid                    | integer (PK) | Identifiant unique |
 | cleabs                 | text         | Identifiant/clé de l’objet dans la source |
@@ -138,7 +138,7 @@ Géométrie : POINT, 2154
 
 ### Table : `sommets`
 
-| Champ      | Type         | Description |
+| Champs      | Types         | Description |
 |------------|--------------|-------------|
 | fid        | integer (PK) | Identifiant unique du sommet |
 | osm_id     | text         | Identifiant OpenStreetMap |
