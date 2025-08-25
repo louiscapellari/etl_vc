@@ -55,7 +55,8 @@ Types : integer(PK), text, text, double, timestamp<br>
 Géométrie : POINT, 2154
 
 ## Dépendances 
-Environnement en python>3.12 recommandé. (Testé via un environnement python crée par Anaconda)
+Testé dans un environnement python 3.12.11 généré via Anaconda.
+Testé avec PostgreSQL 17. 
 
 Liste des librairies python indispensables :<br> 
 - geopandas
@@ -72,7 +73,7 @@ Liste des librairies python indispensables :<br>
 ## Instructions 
  1. Créer un environnement python disposant de toutes les librairies mentionnées ci-dessus ;
  2. Créer une base de données PostgreSQL/PostGIS nommée "etl_vc" ;
- 3. Lancer le fichier .bat "run_pipeline_full.bat" ou dans le terminal de l'environnement python la commande "python pipeline.py --full";
+ 3. Exécuter le fichier .bat "run_pipeline_full.bat", ou dans un terminal exploitant l'environnement python la commande "python pipeline.py --full" (uniquement lorsque vous êtes placé dans le dossier contenant les scripts);
  4. Le script va exécuter le processus ETL automatiquement jusqu'à sa complétion ;
  5. Une fois terminé, la base de données "etl_vc" sera alimentée, les données seront stockées dans le schéma "vc_etl" ;
- 6. Pour mettre à jour les données, lancer le fichier .bat "run_pipeline_upadate.bat". La mise à jour ne s'effectuera que si le "run_pipeline_full.bat" a été exécuté il y a plus de trente jours. Si vous souhaitez mettre à jour avant les trente jours, il faut exécuter le "run_pipeline_full.bat" ou la commande "python pipeline.py --full" à nouveau.
+ 6. Pour mettre à jour les données, lancer le fichier .bat "run_pipeline_upadate.bat", ou dans un terminal exploitant l'environnement python la commande "python pipeline.py --update". La mise à jour ne s'effectuera que si le "run_pipeline_full.bat" a été exécuté il y a plus de trente jours. Si vous souhaitez mettre à jour avant les trente jours, il faut exécuter le "run_pipeline_full.bat" ou la commande "python pipeline.py --full" à nouveau.
