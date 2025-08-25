@@ -9,25 +9,6 @@ ETL reproductible pour **Val-Cenis** (Savoie, 73, France) qui : extrait (via WFS
 - Charger automatiquement les attributs et les géométries, indexer, mettre un timestamp, mettre des commentaires ;
 - Planifier une **mise à jour mensuelle**.
 
-## Sources des données 
-1) Val-Cenis – ADMIN EXPRESS communes mise à jour en continu – IGN<br>
-Flux WFS : https://data.geopf.fr/annexes/ressources/wfs/administratif.xml<br>
-Filtre : nom_officiel = 'Val-Cenis'
-
-2) BAN – Base Adresse Nationale – IGN<br>
-Flux WFS : https://data.geopf.fr/annexes/ressources/wfs/adresse.xml<br>
-Filtre : nom_commune = 'Val-Cenis'
-
-3) Bâtiments – BD TOPO – GPKG département D073 Savoie – IGN<br>
-Page catalogue : https://geoservices.ign.fr/bdtopo<br>
-Couche : batiment (détection automatique)<br>
-Le script parcourt la page internet pour récupérer le lien .7z le plus récent, télécharge, extrait, puis découpe sur l’emprise Val-Cenis.
-
-4) Sommets – Geofabrik Rhône-Alpes – OSM<br>
-Téléchargement : https://download.geofabrik.de/europe/france/rhone-alpes-latest-free.shp.zip<br>
-Couche : gis_osm_natural_free_1<br>
-Filtre : "peak" (sur champ "fclass")<br>
-
 ## Sources des données
 
 ### 1) Val-Cenis – ADMIN EXPRESS (IGN)
@@ -43,7 +24,7 @@ Filtre : "peak" (sur champ "fclass")<br>
 ### 2) BAN – Base Adresse Nationale (IGN)
 |        |                                                                 |
 |-----------------|------------------------------------------------------------------------|
-| **Nom du flux** | Base Adresse Nationale (BAN)                                           |
+| **Nom du flux** | BAN PLUS adresse                                           |
 | **Fournisseur**    | IGN                                                                    |
 | **Accès (WFS)**    | https://data.geopf.fr/annexes/ressources/wfs/adresse.xml               |
 | **Filtre appliqué**| `nom_commune = 'Val-Cenis'`                                            |
@@ -72,7 +53,6 @@ Filtre : "peak" (sur champ "fclass")<br>
 |  **Adresse de téléchargement**  | https://download.geofabrik.de/europe/france/rhone-alpes-latest-free.shp.zip |
 | **Couche utilisée** | `gis_osm_natural_free_1`                                               |
 | **Filtre appliqué** | `"peak"` (sur champ `fclass`)                                          |
-
 
 ## Structure
 
@@ -166,7 +146,6 @@ Filtre : "peak" (sur champ "fclass")<br>
 | updated_at | timestamp    | Date de mise à jour |
 
 **Géométrie** : `POINT` (SRID 2154)
-
 
 ## Dépendances 
 Testé dans un environnement python 3.12.11 généré via Anaconda.
