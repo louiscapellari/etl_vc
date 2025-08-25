@@ -28,36 +28,10 @@ Téléchargement : https://download.geofabrik.de/europe/france/rhone-alpes-lates
 Couche : gis_osm_natural_free_1<br>
 Filtre : "peak" (sur champ "fclass")<br>
 
-## Structure 
-Base de données : etl_vc
-
-Schéma : vc-etl
-
-Tables :<br> 
-val_cenis<br>
-Champs : fid, gml_id, cleabs, nom, statut, population, insee_code, date_recensement, insee_canton, insee_arr, insee_dep, siren_code, postal_code, supf_cadas, updated_at<br>
-Types : integer(PK), text, text, text, text, text, integer, text, timestamp, text, text text, text, text, integer, timestamp<br>
-Géométrie : MULTIPOLYGON, 2154
-
-ban<br>
-Champs : Colonnes dynamiques (récupérées du flux)<br>
-Types : Similaires aux types utilisés dans le flux.<br> 
-Géométrie : POINT, 2154
-
-batiments<br> 
-Champs : fid, cleabs, nature, usage1, usage2, construc_legere, etat_obj, date_crea, date_modif, date_apparition, date_confirm, sources, id_sources, methodes_acquis_plani, methode_acquis_alti, precision_plani, precision_alti, nombre_logements, nombre_etages, materiaux_murs, materiaux_toiture, hauteur, alti_mini_sol, alti_mini_toit, alti_max_toit, alti_max_sol, origine_bat, appariement_fonciers, id_rnb, created_at, updated_at<br>
-Types : integer(PK), text, text, text, text, bool, text, timestamp, timestamp, date, date, text, text, text, text, float, float, integer, integer, text, float, float, float, float, text, text, text, timestamp, timestamp<br> 
-Géométrie : MULTIPOLYGON, 2154 
-
-sommets<br>
-Champs : fid, osm_id, nom, altitude, updated_at<br>
-Types : integer(PK), text, text, double, timestamp<br>
-Géométrie : POINT, 2154
-
 ## Structure
 
 **Base de données** : `etl_vc`  
-**Schéma** : `vc-etl`
+**Schéma** : `vc_etl`
 
 ---
 
@@ -89,8 +63,7 @@ Géométrie : POINT, 2154
 
 | Champs                 | Types       | Notes                             |
 |-----------------------|------------|-----------------------------------|
-| Colonnes dynamiques   | variables  | Récupérées du flux                |
-| *(selon flux)*        | *(similar)*| Types définis par le flux source  |
+| Identique au flux  | Identiques au flux  | Champs et types récupérés du flux                |
 
 **Géométrie** : `POINT` (SRID 2154)
 
