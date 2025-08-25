@@ -39,6 +39,27 @@ Champs : fid, gml_id, cleabs, nom, statut, population, insee_code, date_recensem
 Types : integer(PK), text, text, text, text, text, integer, text, timestamp, text, text text, text, text, integer, timestamp<br>
 Géométrie : MULTIPOLYGON, 2154
 
+| Champ            | Type         | Description             |
+|------------------|--------------|-------------------------|
+| fid              | integer (PK) | Identifiant unique      |
+| gml_id           | text         | ID GML                  |
+| cleabs           | text         | Clé ABS                 |
+| nom              | text         | Nom                     |
+| statut           | text         | Statut                  |
+| population       | text         | Population              |
+| insee_code       | integer      | Code INSEE              |
+| date_recensement | text         | Date du recensement     |
+| insee_canton     | text         | Code INSEE du canton    |
+| insee_arr        | text         | Code INSEE de l’arr.    |
+| insee_dep        | text         | Code INSEE du dép.      |
+| siren_code       | text         | Code SIREN              |
+| postal_code      | text         | Code postal             |
+| supf_cadas       | integer      | Surface cadastrale      |
+| updated_at       | timestamp    | Date de mise à jour     |
+
+**Géométrie** : `MULTIPOLYGON`, SRID: **2154**
+
+
 ban<br>
 Champs : Colonnes dynamiques (récupérées du flux)<br>
 Types : Similaires aux types utilisés dans le flux.<br> 
