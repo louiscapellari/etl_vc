@@ -49,7 +49,7 @@ Filtre : "peak" (sur champ "fclass")<br>
 ---
 
 ### 3) Bâtiments – BD TOPO (IGN)
-
+| Attribut        | Valeur                                                                 |
 |-----------------|------------------------------------------------------------------------|
 | **Nom du dossier**  | BD TOPO – Département D073 (Savoie)                                    |
 | **Fournisseur**     | IGN                                                                    |
