@@ -1,36 +1,37 @@
 # ETL données géospatiales Val-Cenis 
 
-ETL reproductible pour Val-Cenis (Savoie, 73, France) qui : extrait (WFS/OSM/BDTOPO), transforme (nettoyage, formatage, découpage), charge dans une base de donnée PostgreSQL/PostGIS intitulée "etl_vc" et s'exécute via "pipeline.py" ou "run_pipeline_full.bat". Avec la possibilité d'une mise à jour mensuelle via la commande "python pipeline.py --update" dans un environnement python ou via le fichier .bat "run_pipeline_update.bat". 
+ETL reproductible pour **Val-Cenis** (Savoie, 73, France) qui : extrait (via WFS et téléchargements OSM et BDTOPO), transforme (nettoyage, formatage, découpage), charge dans une base de donnée PostgreSQL/PostGIS intitulée "etl_vc" et s'exécute via "pipeline.py" ou "run_pipeline_full.bat". Avec la possibilité d'une mise à jour mensuelle via la commande "python pipeline.py --update" ou via le fichier .bat "run_pipeline_update.bat". Pour que le pipeline fonctionne, un environnement python est nécessaire. Les dépendances sont détaillées ci-dessous. 
 
 ## Objectifs
 - Automatiser l’acquisition de données géospatiales pour la commune de **Val-Cenis** (via utilisation de WFS / téléchargements) ;
 - Filtrer/découper par l’emprise de **Val-Cenis** ;
-- Créer les tables **PostgreSQL/PostGIS** au bon format ;
+- Créer les tables **PostgreSQL/PostGIS** au bon format et avec les types corrects ;
 - Charger automatiquement les attributs et les géométries, indexer, mettre un timestamp, mettre des commentaires ;
 - Planifier une **mise à jour mensuelle**.
 
 ## Sources des données 
-1) Val-Cenis (ADMIN EXPRESS (mise à jour en continu) – communes, IGN WFS)<br>
+1) Val-Cenis – ADMIN EXPRESS communes mise à jour en continu – IGN<br>
 Flux WFS : https://data.geopf.fr/annexes/ressources/wfs/administratif.xml<br>
 Filtre : nom_officiel = 'Val-Cenis'
 
-2) BAN – Base Adresse Nationale (IGN WFS)<br>
+2) BAN – Base Adresse Nationale – IGN<br>
 Flux WFS : https://data.geopf.fr/annexes/ressources/wfs/adresse.xml<br>
 Filtre : nom_commune = 'Val-Cenis'
 
-3) Bâtiments (BD TOPO IGN – GPKG département D073 Savoie)<br>
+3) Bâtiments – BD TOPO – GPKG département D073 Savoie – IGN<br>
 Page catalogue : https://geoservices.ign.fr/bdtopo<br>
 Couche : batiment (détection automatique)<br>
 Le script parcourt la page internet pour récupérer le lien .7z le plus récent, télécharge, extrait, puis découpe sur l’emprise Val-Cenis.
 
-4) Sommets (OSM – Geofabrik Rhône-Alpes)<br>
+4) Sommets – Geofabrik Rhône-Alpes – OSM<br>
 Téléchargement : https://download.geofabrik.de/europe/france/rhone-alpes-latest-free.shp.zip<br>
 Couche : gis_osm_natural_free_1<br>
 Filtre : "peak" (sur champ "fclass")<br>
-Le script filtre sur la couche, extrait, puis découpe sur l'emprise de Val-Cenis.
 
 ## Structure 
-Schéma : "vc-etl" 
+Base de données : etl_vc
+
+Schéma : vc-etl
 
 Tables :<br> 
 val_cenis<br>
@@ -54,7 +55,7 @@ Types : integer(PK), text, text, double, timestamp<br>
 Géométrie : POINT, 2154
 
 ## Dépendances 
-Environnement Anaconda ou Miniconda en python>3.12 recommandé.
+Environnement en python>3.12 recommandé. (Testé via un environnement python crée par Anaconda)
 
 Liste des librairies python indispensables :<br> 
 - geopandas
@@ -74,4 +75,4 @@ Liste des librairies python indispensables :<br>
  3. Lancer le fichier .bat "run_pipeline_full.bat" ou dans le terminal de l'environnement python la commande "python pipeline.py --full";
  4. Le script va exécuter le processus ETL automatiquement jusqu'à sa complétion ;
  5. Une fois terminé, la base de données "etl_vc" sera alimentée, les données seront stockées dans le schéma "vc_etl" ;
- 6. Pour mettre à jour les données, lancer le fichier .bat "run_pipeline_upadate.bat". La mise à jour ne s'effectuera que si le "run_pipeline_full.bat" a été exécuté il y a plus de trente jours. Si vous souhaitez mettre à jour avant les trente jours, il faut exécuter le "run_pipeline_full.bat" à nouveau.
+ 6. Pour mettre à jour les données, lancer le fichier .bat "run_pipeline_upadate.bat". La mise à jour ne s'effectuera que si le "run_pipeline_full.bat" a été exécuté il y a plus de trente jours. Si vous souhaitez mettre à jour avant les trente jours, il faut exécuter le "run_pipeline_full.bat" ou la commande "python pipeline.py --full" à nouveau.
