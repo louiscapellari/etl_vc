@@ -39,27 +39,6 @@ Champs : fid, gml_id, cleabs, nom, statut, population, insee_code, date_recensem
 Types : integer(PK), text, text, text, text, text, integer, text, timestamp, text, text text, text, text, integer, timestamp<br>
 Géométrie : MULTIPOLYGON, 2154
 
-| Champ            | Type         | Description             |
-|------------------|--------------|-------------------------|
-| fid              | integer (PK) | Identifiant unique      |
-| gml_id           | text         | ID GML                  |
-| cleabs           | text         | Clé ABS                 |
-| nom              | text         | Nom                     |
-| statut           | text         | Statut                  |
-| population       | text         | Population              |
-| insee_code       | integer      | Code INSEE              |
-| date_recensement | text         | Date du recensement     |
-| insee_canton     | text         | Code INSEE du canton    |
-| insee_arr        | text         | Code INSEE de l’arr.    |
-| insee_dep        | text         | Code INSEE du dép.      |
-| siren_code       | text         | Code SIREN              |
-| postal_code      | text         | Code postal             |
-| supf_cadas       | integer      | Surface cadastrale      |
-| updated_at       | timestamp    | Date de mise à jour     |
-
-**Géométrie** : `MULTIPOLYGON`, SRID: **2154**
-
-
 ban<br>
 Champs : Colonnes dynamiques (récupérées du flux)<br>
 Types : Similaires aux types utilisés dans le flux.<br> 
@@ -74,6 +53,101 @@ sommets<br>
 Champs : fid, osm_id, nom, altitude, updated_at<br>
 Types : integer(PK), text, text, double, timestamp<br>
 Géométrie : POINT, 2154
+
+## Structure
+
+**Base de données** : `etl_vc`  
+**Schéma** : `vc-etl`
+
+---
+
+### Table : `val_cenis`
+
+| Champ            | Type         | Description (si dispo)   |
+|------------------|--------------|---------------------------|
+| fid              | integer (PK) | Identifiant unique        |
+| gml_id           | text         | ID GML                    |
+| cleabs           | text         | Clé ABS                   |
+| nom              | text         | Nom                       |
+| statut           | text         | Statut                    |
+| population       | text         | Population                |
+| insee_code       | integer      | Code INSEE                |
+| date_recensement | text         | Date du recensement       |
+| insee_canton     | text         | Code INSEE du canton      |
+| insee_arr        | text         | Code INSEE de l’arr.      |
+| insee_dep        | text         | Code INSEE du dép.        |
+| siren_code       | text         | Code SIREN                |
+| postal_code      | text         | Code postal               |
+| supf_cadas       | integer      | Surface cadastrale        |
+| updated_at       | timestamp    | Date de mise à jour       |
+
+**Géométrie** : `MULTIPOLYGON` (SRID 2154)
+
+---
+
+### Table : `ban`
+
+| Champ                 | Type       | Notes                             |
+|-----------------------|------------|-----------------------------------|
+| Colonnes dynamiques   | variables  | Récupérées du flux                |
+| *(selon flux)*        | *(similar)*| Types définis par le flux source  |
+
+**Géométrie** : `POINT` (SRID 2154)
+
+---
+
+### Table : `batiments`
+
+| Champ                  | Type         | Description |
+|------------------------|--------------|-------------|
+| fid                    | integer (PK) | Identifiant unique |
+| cleabs                 | text         | Identifiant/clé de l’objet dans la source |
+| nature                 | text         | Nature du bâtiment |
+| usage1                 | text         | Usage principal |
+| usage2                 | text         | Usage secondaire |
+| construc_legere        | bool         | Indique une construction légère |
+| etat_obj               | text         | État de l’objet |
+| date_crea              | timestamp    | Date/heure de création de l’enregistrement |
+| date_modif             | timestamp    | Date/heure de dernière modification |
+| date_apparition        | date         | Date d’apparition dans la source |
+| date_confirm           | date         | Date de confirmation/validation |
+| sources                | text         | Libellé(s) de la/les source(s) de données |
+| id_sources             | text         | Identifiant(s) de la/les source(s) |
+| methodes_acquis_plani  | text         | Méthode d’acquisition planimétrique |
+| methode_acquis_alti    | text         | Méthode d’acquisition altimétrique |
+| precision_plani        | float        | Précision planimétrique (m) |
+| precision_alti         | float        | Précision altimétrique (m) |
+| nombre_logements       | integer      | Nombre de logements |
+| nombre_etages          | integer      | Nombre d’étages |
+| materiaux_murs         | text         | Matériaux des murs |
+| materiaux_toiture      | text         | Matériaux de la toiture |
+| hauteur                | float        | Hauteur du bâtiment (m) |
+| alti_mini_sol          | float        | Altitude minimale au sol (m) |
+| alti_mini_toit         | float        | Altitude minimale du toit (m) |
+| alti_max_toit          | float        | Altitude maximale du toit (m) |
+| alti_max_sol           | float        | Altitude maximale au sol (m) |
+| origine_bat            | text         | Origine (numérisé, import externe, etc.) |
+| appariement_fonciers   | text         | Statut d’appariement avec les données foncières |
+| id_rnb                 | text         | Identifiant au Référentiel National des Bâtiments (RNB) |
+| created_at             | timestamp    | Date de création côté ETL |
+| updated_at             | timestamp    | Date de mise à jour côté ETL |
+
+**Géométrie** : `MULTIPOLYGON` (SRID 2154)
+
+---
+
+### Table : `sommets`
+
+| Champ      | Type         | Description |
+|------------|--------------|-------------|
+| fid        | integer (PK) | Identifiant unique du sommet |
+| osm_id     | text         | Identifiant OpenStreetMap |
+| nom        | text         | Nom du sommet |
+| altitude   | double       | Altitude (mètres) |
+| updated_at | timestamp    | Date de mise à jour |
+
+**Géométrie** : `POINT` (SRID 2154)
+
 
 ## Dépendances 
 Testé dans un environnement python 3.12.11 généré via Anaconda.
