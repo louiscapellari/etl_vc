@@ -39,7 +39,6 @@ ETL reproductible pour **Val-Cenis** (Savoie, 73, France) qui : extrait (via WFS
 | **Format source**   | GPKG                                                                   |
 | **Adresse de téléchargement** | https://geoservices.ign.fr/bdtopo                                      |
 | **Couche utilisée** | `batiment` (détection automatique)                                     |
-| **Traitement** | Le script récupère le lien `.7z`de BD TOPO – Département D073 le plus récent, télécharge, extrait, découpe sur l’emprise Val-Cenis |
 
 ---
 
