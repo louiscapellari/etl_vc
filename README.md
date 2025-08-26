@@ -147,7 +147,7 @@ ETL reproductible pour **Val-Cenis** (Savoie, 73, France) qui : extrait (via WFS
 **Géométrie** : `POINT` (SRID 2154)
 
 ## Dépendances 
-Testé dans un environnement python 3.12.11 généré via Anaconda.
+Testé dans un environnement python 3.12.11 généré via Anaconda.<br>
 Testé avec PostgreSQL 17. 
 
 Liste des librairies python indispensables :<br> 
