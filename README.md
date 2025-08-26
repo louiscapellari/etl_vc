@@ -166,7 +166,9 @@ Liste des librairies python indispensables :<br>
 ## Instructions 
  1. Créer un environnement python disposant de toutes les librairies mentionnées ci-dessus ;
  2. Créer une base de données PostgreSQL/PostGIS nommée "etl_vc" ;
- 3. Exécuter le fichier .bat "run_pipeline_full.bat" (il faut changer les chemins à l'intérieur au préalable), ou dans un terminal exploitant l'environnement python la commande "python pipeline.py --full" (uniquement lorsque vous êtes placé dans le dossier contenant les scripts);
- 4. Le script va exécuter le processus ETL automatiquement jusqu'à sa complétion ;
- 5. Une fois terminé, la base de données "etl_vc" sera alimentée, les données seront stockées dans le schéma "vc_etl" ;
- 6. Pour mettre à jour les données, lancer le fichier .bat "run_pipeline_upadate.bat", ou dans un terminal exploitant l'environnement python la commande "python pipeline.py --update". La mise à jour ne s'effectuera que si le "run_pipeline_full.bat" a été exécuté il y a plus de trente jours. Si vous souhaitez mettre à jour avant les trente jours, il faut exécuter le "run_pipeline_full.bat" ou la commande "python pipeline.py --full" à nouveau.
+ 3. Modifier les fichiers .bat avec vos chemins personnels (détaillé dans les fichiers .bat)
+ 4. Modifier le mot de passe de votre base de données dans le fichier "config.py"
+ 5. Exécuter le fichier .bat "run_pipeline_full.bat" (il faut changer les chemins à l'intérieur au préalable), ou dans un terminal exploitant l'environnement python la commande "python pipeline.py --full" (uniquement lorsque vous êtes placé dans le dossier contenant les scripts);
+ 6. Le script va exécuter le processus ETL automatiquement jusqu'à sa complétion ;
+ 7. Une fois terminé, la base de données "etl_vc" sera alimentée, les données seront stockées dans le schéma "vc_etl" ;
+ 8. Pour mettre à jour les données, lancer le fichier .bat "run_pipeline_upadate.bat", ou dans un terminal exploitant l'environnement python la commande "python pipeline.py --update". La mise à jour ne s'effectuera que si le "run_pipeline_full.bat" a été exécuté il y a plus de trente jours. Si vous souhaitez mettre à jour avant les trente jours, il faut exécuter le "run_pipeline_full.bat" ou la commande "python pipeline.py --full" à nouveau.
