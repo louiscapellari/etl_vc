@@ -163,10 +163,10 @@ Liste des librairies python indispensables :<br>
 - beautifulsoup4
 
 ## Instructions 
- 1. Créer un environnement python disposant de toutes les librairies mentionnées ci-dessus ;
- 2. Créer une base de données PostgreSQL/PostGIS nommée "etl_vc" ;
- 3. Modifier le mot de passe, et éventuellement le nom d'utilisateur de votre base de données dans le fichier "config.py" ;
- 4. Exécuter le fichier "pipeline.py" dans un terminal exploitant l'environnement python la commande "python pipeline.py --full", uniquement lorsque vous êtes placé dans le dossier contenant les scripts, (exemple dans le terminal : cd "chemin du dossier contenant les scripts"). ;
+ 1. Créez un environnement python disposant de toutes les librairies mentionnées ci-dessus ;
+ 2. Créez une base de données PostgreSQL/PostGIS nommée "etl_vc" ;
+ 3. Modifiez le mot de passe, et éventuellement le nom d'utilisateur de votre base de données dans le fichier "config.py" ;
+ 4. Exécutez le fichier "pipeline.py" dans un terminal exploitant l'environnement python la commande "python pipeline.py --full", uniquement lorsque vous êtes placé dans le dossier contenant les scripts, (exemple dans le terminal : cd "chemin du dossier contenant les scripts"). ;
  5. Le script va exécuter le processus ETL automatiquement jusqu'à sa complétion ;
  6. Les données téléchargées seront stockées dans un dossier temporaire "vc-tmp" dans les "Documents" sous windows ou dans le sous-dossier "temp" au sein du dossier contenant les scripts si vous utilisez un autre système d'exploitation.
  7. Une fois terminé, la base de données "etl_vc" sera alimentée, les données seront stockées dans le schéma "vc_etl" ;
