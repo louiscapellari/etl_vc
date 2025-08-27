@@ -171,3 +171,11 @@ Liste des librairies python indispensables :<br>
  6. Les données téléchargées seront stockées dans un dossier temporaire "vc-tmp" dans les "Documents" sous windows ou dans le sous-dossier "temp" au sein du dossier contenant les scripts si vous utilisez un autre système d'exploitation.
  7. Une fois terminé, la base de données "etl_vc" sera alimentée, les données seront stockées dans le schéma "vc_etl" ;
  8. Pour mettre à jour les données, exécutez dans un terminal exploitant l'environnement python la commande "python pipeline.py --update" uniquement lorsque vous êtes placé dans le dossier contenant les scripts, (exemple dans le terminal : cd "chemin du dossier contenant les scripts"). La mise à jour ne s'effectuera que si le pipeline a été exécuté il y a plus de trente jours. Si vous souhaitez mettre à jour avant les trente jours, il faut exécuter la commande "python pipeline.py --full" à nouveau.
+
+## Résultats 
+Lorsque le processus est correctement achevé, vous devriez obtenir ce type de résultat : 
+<img width="659" height="54" alt="etl_console" src="https://github.com/user-attachments/assets/17fe22e0-8018-4970-ba63-3c55b3f6813b" />
+<img width="382" height="425" alt="etl_postgres" src="https://github.com/user-attachments/assets/6d26f4d2-1188-4b9c-850e-d8d1ae11f47e" />
+<img width="963" height="503" alt="etl_qgis" src="https://github.com/user-attachments/assets/e9c44176-fd6d-4fbe-9184-2b53ad0da9eb" />
+
+
