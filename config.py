@@ -48,7 +48,7 @@ BASE_DE_DONNEES = {
     "port": int(os.getenv("PGPORT", "5432")),
     "database": os.getenv("PGDATABASE", "etl_vc"),
     "user": os.getenv("PGUSER", "postgres"),        # Renseignez le nom de d'utilisateur si différent
-    "password": os.getenv("PGPASSWORD", "admin"),   # Mot de passe à renseigner
+    "password": os.getenv("PGPASSWORD", ""),   # Mot de passe à renseigner
 }
 
 DATABASE = BASE_DE_DONNEES
@@ -282,3 +282,4 @@ if __name__ == "__main__":
     print("\nSorties prévues :")
     for t in ("val_cenis", "ban", "sommets", "batiments"):
         print(f"- {t}: {recup_chemin_export(t)}")
+
