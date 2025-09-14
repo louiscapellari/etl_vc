@@ -65,8 +65,8 @@ ETL reproductible pour **Val-Cenis** (Savoie, 73, France) qui : extrait (via WFS
 | Champs            | Types         | Description   |
 |------------------|--------------|---------------------------|
 | fid              | integer (PK) | Identifiant unique        |
-| gml_id           | text         | ID GML                    |
-| cleabs           | text         | Clé ABS                   |
+| gml_id           | text         | -                    |
+| cleabs           | text         | -                   |
 | nom              | text         | Nom                       |
 | statut           | text         | Statut                    |
 | population       | text         | Population                |
@@ -99,7 +99,7 @@ ETL reproductible pour **Val-Cenis** (Savoie, 73, France) qui : extrait (via WFS
 | Champs                  | Types         | Description |
 |------------------------|--------------|-------------|
 | fid                    | integer (PK) | Identifiant unique |
-| cleabs                 | text         | Identifiant/clé de l’objet dans la source |
+| cleabs                 | text         | - |
 | nature                 | text         | Nature du bâtiment |
 | usage1                 | text         | Usage principal |
 | usage2                 | text         | Usage secondaire |
