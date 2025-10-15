@@ -3,11 +3,11 @@
 ETL reproductible sur la commune de **Val-Cenis** (Savoie, 73, France) qui : extrait (via WFS et téléchargements OSM et BDTOPO), transforme (nettoyage, formatage, découpage), charge dans une base de données PostgreSQL/PostGIS intitulée "etl_vc" et s'exécute dans un environnement python via le script "pipeline.py" avec la commande "python pipeline.py --full". Il est inclus la possibilité d'une mise à jour mensuelle via la commande "python pipeline.py --update". Il est possible de créer un fichier .bat qui active l'environnement python et qui se place dans le dossier contenant les scripts pour une exécution automatisée. Un environnement python est nécessaire, les dépendances sont détaillées ci-dessous. 
 
 ## Objectifs
-- Automatiser l’acquisition de données géospatiales pour la commune de **Val-Cenis** (via utilisation de WFS / téléchargements) ;
-- Filtrer/découper par l’emprise de **Val-Cenis** ;
-- Créer les tables **PostgreSQL/PostGIS** au bon format et avec les types corrects ;
+- Automatiser l’acquisition de données géospatiales pour la commune de Val-Cenis (via utilisation de WFS / téléchargements) ;
+- Filtrer/découper par l’emprise de Val-Cenis ;
+- Créer les tables PostgreSQL/PostGIS au bon format et avec les types corrects ;
 - Charger automatiquement les attributs et les géométries, indexer, mettre un timestamp, mettre des commentaires ;
-- Planifier une **mise à jour mensuelle**.
+- Planifier une mise à jour mensuelle.
 
 ## Sources des données
 
