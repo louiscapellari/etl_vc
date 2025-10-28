@@ -1,6 +1,7 @@
-# ETL données géospatiales sur la commune de Val-Cenis 
+# Pipeline ETL données géospatiales sur la commune de Val-Cenis 
 
-ETL reproductible sur la commune de **Val-Cenis** (Savoie, 73, France) qui : extrait (via WFS et téléchargements OSM et BDTOPO), transforme (nettoyage, formatage, découpage), charge dans une base de données PostgreSQL/PostGIS intitulée `etl_vc` et s'exécute dans un environnement python via le script `pipeline.py` avec la commande `python pipeline.py --full`. Il est inclus la possibilité d'une mise à jour mensuelle via la commande `python pipeline.py --update`. Il est possible de créer un fichier .bat qui active l'environnement python et qui se place dans le dossier contenant les scripts pour une exécution automatisée. Un environnement python est nécessaire, les dépendances sont détaillées ci-dessous. 
+Pipeline ETL reproductible sur la commune de **Val-Cenis** (Savoie, 73, France) qui : extrait (via WFS et téléchargements OSM et BDTOPO), transforme (nettoyage, formatage, mapping, découpage), charge dans une base de données PostgreSQL/PostGIS quatre couches, avec une possibilité de maintenance via mise à jour. 
+
 
 ## Objectifs
 - Automatiser l’acquisition de données géospatiales pour la commune de Val-Cenis (via utilisation de WFS / téléchargements) ;
@@ -38,7 +39,7 @@ ETL reproductible sur la commune de **Val-Cenis** (Savoie, 73, France) qui : ext
 | **Fournisseur**     | IGN                                                                    |
 | **Format source**   | GPKG                                                                   |
 | **Adresse de téléchargement** | https://geoservices.ign.fr/bdtopo                                      |
-| **Couche utilisée** | `batiment` (détection automatique)                                     |
+| **Couche utilisée** | `batiment`                                     |
 
 ---
 
@@ -164,13 +165,14 @@ Liste des librairies python indispensables :<br>
 
 ## Instructions 
  1. Créez un environnement python disposant de toutes les librairies mentionnées ci-dessus ;
- 2. Créez une base de données PostgreSQL/PostGIS (l'ajout de l'extension PostGIS est indispensable) nommée `etl_vc` ;
+ 2. Créez une base de données PostgreSQL/PostGIS (l'ajout de l'extension PostGIS est prévue dans le script, mais vous pouvez aussi le faire au moment de la création de la base de données) nommée `etl_vc` ;
  3. Modifiez le mot de passe, et éventuellement le nom d'utilisateur de votre base de données dans le fichier `config.py` ;
- 4. Exécutez le fichier `pipeline.py` dans un terminal exploitant l'environnement python la commande `python pipeline.py --full`, uniquement lorsque vous êtes placé dans le dossier contenant les scripts, (exemple dans le terminal : cd "chemin du dossier contenant les scripts"). ;
+ 4. Exécutez le fichier `pipeline.py` dans un terminal exploitant l'environnement python la commande `python pipeline.py --full`, uniquement lorsque vous êtes placé dans le dossier contenant les scripts, (exemple dans le terminal : `cd "chemin du dossier contenant les scripts"`). ;
  5. Le script va exécuter le processus ETL automatiquement jusqu'à sa complétion ;
- 6. Les données téléchargées seront stockées dans un dossier temporaire "vc-tmp" dans les "Documents" sous windows ou dans le sous-dossier "temp" au sein du dossier contenant les scripts si vous utilisez un autre système d'exploitation.
+ 6. Les données téléchargées seront stockées dans un dossier temporaire "vc-tmp" dans les "Documents" sous Windows ou dans le sous-dossier "temp" au sein du dossier contenant les scripts si vous utilisez un autre système d'exploitation.
  7. Une fois terminé, la base de données `etl_vc` sera alimentée, les données seront stockées dans le schéma `vc_etl` ;
  8. Pour mettre à jour les données, exécutez dans un terminal exploitant l'environnement python la commande `python pipeline.py --update` uniquement lorsque vous êtes placé dans le dossier contenant les scripts, (exemple dans le terminal : `cd "chemin du dossier contenant les scripts"`). La mise à jour ne s'effectuera que si le pipeline a été exécuté il y a plus de trente jours. Si vous souhaitez mettre à jour avant les trente jours, il faut exécuter la commande `python pipeline.py --full` à nouveau.
+ 9. Il est possible de créer un fichier .bat qui active l'environnement python et qui se place dans le dossier contenant les scripts pour une exécution totalement automatisée.
 
 ## Résultats 
 Lorsque le processus est correctement achevé, vous devriez obtenir ce type de résultat : <br> 
