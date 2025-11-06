@@ -1,6 +1,6 @@
 # Pipeline ETL données géospatiales sur la commune de Val-Cenis 
 
-Pipeline ETL reproductible sur la commune de **Val-Cenis** (Savoie, 73, France) qui : extrait (via WFS et téléchargements OSM et BDTOPO), transforme (nettoyage, formatage, mapping, découpage), charge dans une base de données PostgreSQL/PostGIS quatre couches, avec une possibilité de maintenance via mise à jour. 
+Pipeline ETL reproductible sur la commune de **Val-Cenis** (Savoie, 73, France) qui : extrait (via WFS et téléchargements OSM et BDTOPO), transforme (nettoyage, formatage, mapping, découpage), charge dans une base de données PostgreSQL/PostGIS quatre couches, avec une possibilité de maintenance via une mise à jour mensuelle. 
 
 
 ## Objectifs
