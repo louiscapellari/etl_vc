@@ -70,12 +70,12 @@ Pipeline ETL reproductible sur la commune de **Val-Cenis** (Savoie, 73, France) 
 | cleabs           | text         | -                   |
 | nom              | text         | Nom                       |
 | statut           | text         | Statut                    |
-| population       | text         | Population                |
+| population       | text         | Nombre d'habitants               |
 | insee_code       | integer      | Code INSEE                |
 | date_recensement | text         | Date du recensement       |
 | insee_canton     | text         | Code INSEE du canton      |
-| insee_arr        | text         | Code INSEE de l’arr.      |
-| insee_dep        | text         | Code INSEE du dép.        |
+| insee_arr        | text         | Code INSEE de l’arrondissement      |
+| insee_dep        | text         | Code INSEE du département        |
 | siren_code       | text         | Code SIREN                |
 | postal_code      | text         | Code postal               |
 | supf_cadas       | integer      | Surface cadastrale        |
@@ -109,7 +109,7 @@ Pipeline ETL reproductible sur la commune de **Val-Cenis** (Savoie, 73, France) 
 | date_crea              | timestamp    | Date/heure de création de l’enregistrement |
 | date_modif             | timestamp    | Date/heure de dernière modification |
 | date_apparition        | date         | Date d’apparition dans la source |
-| date_confirm           | date         | Date de confirmation/validation |
+| date_confirm           | date         | Date de confirmation |
 | sources                | text         | Libellé(s) de la/les source(s) de données |
 | id_sources             | text         | Identifiant(s) de la/les source(s) |
 | methodes_acquis_plani  | text         | Méthode d’acquisition planimétrique |
@@ -167,9 +167,9 @@ Liste des librairies python indispensables :<br>
  1. Créez un environnement python disposant de toutes les librairies mentionnées ci-dessus ;
  2. Créez une base de données PostgreSQL/PostGIS (l'ajout de l'extension PostGIS est prévue dans le script, mais vous pouvez aussi le faire au moment de la création de la base de données) nommée `etl_vc` ;
  3. Modifiez le mot de passe, et éventuellement le nom d'utilisateur de votre base de données dans le fichier `config.py` ;
- 4. Exécutez le fichier `pipeline.py` dans un terminal exploitant l'environnement python la commande `python pipeline.py --full`, uniquement lorsque vous êtes placé dans le dossier contenant les scripts, (exemple dans le terminal : `cd "chemin du dossier contenant les scripts"`). ;
+ 4. Exécutez le fichier `pipeline.py` dans une console exploitant l'environnement python avec la commande `python pipeline.py --full`, uniquement lorsque vous êtes placé dans le dossier contenant les scripts, (exemple dans le terminal : `cd "chemin du dossier contenant les scripts"`). ;
  5. Le script va exécuter le processus ETL automatiquement jusqu'à sa complétion ;
- 6. Les données téléchargées seront stockées dans un dossier temporaire "vc-tmp" dans les "Documents" sous Windows ou dans le sous-dossier "temp" au sein du dossier contenant les scripts si vous utilisez un autre système d'exploitation.
+ 6. Les données téléchargées seront stockées dans un dossier temporaire "vc-tmp" dans les "Documents" sous Windows ou dans le sous-dossier "temp" au sein du dossier contenant les scripts si vous utilisez un autre système d'exploitation ; 
  7. Une fois terminé, la base de données `etl_vc` sera alimentée, les données seront stockées dans le schéma `vc_etl` ;
  8. Pour mettre à jour les données, exécutez dans un terminal exploitant l'environnement python la commande `python pipeline.py --update` uniquement lorsque vous êtes placé dans le dossier contenant les scripts, (exemple dans le terminal : `cd "chemin du dossier contenant les scripts"`). La mise à jour ne s'effectuera que si le pipeline a été exécuté il y a plus de trente jours. Si vous souhaitez mettre à jour avant les trente jours, il faut exécuter la commande `python pipeline.py --full` à nouveau.
  9. Il est possible de créer un fichier .bat qui active l'environnement python et qui se place dans le dossier contenant les scripts pour une exécution totalement automatisée.
