@@ -166,7 +166,7 @@ Liste des librairies python indispensables :<br>
 ## Instructions 
  1. Créez un environnement python disposant de toutes les librairies mentionnées ci-dessus ;
  2. Créez une base de données PostgreSQL/PostGIS (l'ajout de l'extension PostGIS est prévue dans le script, mais vous pouvez aussi le faire au moment de la création de la base de données) nommée `etl_vc` ;
- 3. Modifiez le mot de passe, et éventuellement le nom d'utilisateur de votre base de données dans le fichier `config.py` ;
+ 3. Modifiez les informations de connexion à votre base de données, le mot de passe, et éventuellement le nom d'utilisateur de votre base de données dans le fichier `config.py` ;
  4. Exécutez le fichier `pipeline.py` dans une console exploitant l'environnement python avec la commande `python pipeline.py --full`, uniquement lorsque vous êtes placé dans le dossier contenant les scripts, (exemple dans le terminal : `cd "chemin du dossier contenant les scripts"`). ;
  5. Le script va exécuter le processus ETL automatiquement jusqu'à sa complétion ;
  6. Les données téléchargées seront stockées dans un dossier temporaire "vc-tmp" dans les "Documents" sous Windows ou dans le sous-dossier "temp" au sein du dossier contenant les scripts si vous utilisez un autre système d'exploitation ; 
