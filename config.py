@@ -35,10 +35,10 @@ def like(field: str, value: str) -> str:
 
 # Connexion bdd
 BASE_DE_DONNEES = {
-    "host": os.getenv("PGHOST", "localhost"),
-    "port": int(os.getenv("PGPORT", "5432")),
-    "database": os.getenv("PGDATABASE", "etl_vc"),
-    "user": os.getenv("PGUSER", "postgres"),        # Renseignez le nom de d'utilisateur si différent
+    "host": os.getenv("PGHOST", "localhost"), # À éventuellement modifier 
+    "port": int(os.getenv("PGPORT", "5432")), # À éventuellement modifier 
+    "database": os.getenv("PGDATABASE", "etl_vc"), # Modifiez si vous souhaitez que le nom de votre base de données soit différent de "etl_vc"
+    "user": os.getenv("PGUSER", "postgres"),   # Renseignez le nom de d'utilisateur si différent
     "password": os.getenv("PGPASSWORD", ""),   # Mot de passe à renseigner
 }
 
